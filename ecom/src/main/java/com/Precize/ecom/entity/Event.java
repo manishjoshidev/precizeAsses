@@ -10,17 +10,14 @@ import java.time.Instant;
 @Entity
 public class Event {
     @Id
-    private String eventId;
+    private Long eventId;
 
     private Instant timestamp;
     private String eventType;
 
-
-
-
     protected Event() {}
 
-    public Event(String eventId, Instant timestamp, String eventType) {
+    public Event(Long eventId, Instant timestamp, String eventType) {
         this.eventId = eventId;
         this.timestamp = timestamp;
         this.eventType = eventType;
@@ -29,11 +26,11 @@ public class Event {
     @JoinColumn(name = "order_order_id")
     private Order order;
 
-    public String getEventId() {
+    public Long getEventId() {
         return eventId;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId(Long eventId) {
         this.eventId = eventId;
     }
 

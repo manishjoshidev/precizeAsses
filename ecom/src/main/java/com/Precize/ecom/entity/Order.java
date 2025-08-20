@@ -17,7 +17,7 @@ public class Order {
     private Map<String, Integer> items = new HashMap<>();
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String orderId;
+    private Long orderId;
 
     private String customerId;
     public Order() {}
@@ -37,7 +37,7 @@ public class Order {
         this.items = items;
     } // JPA needs a no-args constructor
 
-    public Order(String orderId, String customerId, Map<String, Integer> items, double totalAmount) {
+    public Order(Long orderId, String customerId, Map<String, Integer> items, double totalAmount) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.items = items;
@@ -53,11 +53,11 @@ public class Order {
         this.items = items;
     }
 
-    public String getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 

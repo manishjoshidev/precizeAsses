@@ -1,7 +1,7 @@
 package com.Precize.ecom.service;
 
 import com.Precize.ecom.entity.*;
-import com.Precize.ecom.observer.Observer; // ✅ use your custom Observer interface
+import com.Precize.ecom.observer.Observer;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -12,17 +12,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Service
 public class EventProcessor {
 
-    private final Map<String, Order> orderStore = new HashMap<>();
+    private final Map<Long, Order> orderStore = new HashMap<>();
     private final List<Observer> observers = new CopyOnWriteArrayList<>();
 
-    // ✅ Now accepts ANY observer (AlertObserver, LoggerObserver, etc.)
+
     public void registerObserver(Observer observer) {
         observers.add(observer);
     }
 
     private void notifyObservers(Order order, Event event) {
         for (Observer obs : observers) {
-            obs.update(order, event); // ✅ call your custom Observer method
+            obs.update(order, event);
         }
     }
 
