@@ -2,6 +2,7 @@ package com.Precize.ecom.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 import java.time.Instant;
@@ -14,16 +15,19 @@ public class Event {
     private Instant timestamp;
     private String eventType;
 
-    @ManyToOne
-    private Order order;
 
-    protected Event() {} // JPA needs it
+
+
+    protected Event() {}
 
     public Event(String eventId, Instant timestamp, String eventType) {
         this.eventId = eventId;
         this.timestamp = timestamp;
         this.eventType = eventType;
     }
+    @ManyToOne
+    @JoinColumn(name = "order_order_id")
+    private Order order;
 
     public String getEventId() {
         return eventId;

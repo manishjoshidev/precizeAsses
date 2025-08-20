@@ -16,9 +16,11 @@ public class Order {
     @Column(name = "quantity")
     private Map<String, Integer> items = new HashMap<>();
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String orderId;
 
     private String customerId;
+    public Order() {}
 
     // Not directly persistable, use @ElementCollection or another entity
     // Map<String,Integer> items;
